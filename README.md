@@ -1,6 +1,6 @@
 # Liberation-lite
 Liberation-lite is a basic port of [Liberation](https://github.com/Razzile/Liberation) that runs on top of either 
-[frida]() or [cycript]() (coming soon).
+[frida](https://github.com/frida/frida) or [cycript](http://www.cycript.org) (coming soon).
 
 It is currently very incomplete and buggy.
 
