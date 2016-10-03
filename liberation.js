@@ -12,13 +12,26 @@ function toBytesInt32(num) {
     var arr = new ArrayBuffer(4);
     var view = new DataView(arr);
     view.setUint32(0, num, false);
+
     return arr;
 }
 
 function Liberation_Apply() {
+    var _data;
+    switch (typeof this.data) {
+        case 'object': {
+            _data = this.data;
+            break;
+        }
+        case 'number': {
+            _data = toBytesInt32(this.data);
+            break;
+        }
+    }
+
     try {
         Memory.protect(ptr(this.address), 4096, 'rw-');
-        Memory.writeU32(ptr(this.address), this.data);
+        Memory.writeByteArray(ptr(this.address), _data);
         Memory.protect(ptr(this.address), 4096, 'rx');
     }
     catch (e) {
